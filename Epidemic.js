@@ -147,6 +147,32 @@
             person.posY = canvas.height - radius;
         }		
 	}
+	
+	function CollideWithOthers(person, i) {
+        for (j = 0; j < i; ++j) {
+            var person2 = people[j];
+            if (person2.dead) continue;
+
+            if (person.Collision(person2)) {
+                person.Collide(person2);
+
+                if (person.infected && !person2.infected && !person2.cured) {
+                    if (Math.random() < infectProb)
+                    {
+                       person2.infected = true;
+                       ++infections;
+                    }
+                }
+                else if (person2.infected && !person.infected && !person.cured) {
+                    if (Math.random() < infectProb)
+                    {
+                       person.infected = true;
+                       ++infections;
+                    }
+                }
+            }
+        }		
+	}
 
     function Advance() {
         // for each from the population
@@ -161,37 +187,15 @@
 
             // collide / infect / cure
 
-			CollideWithWalls(person);
+            CollideWithWalls(person);
 
             // keep track of how long the infection lasts
             if (person.infected)
                 person.infectedTime += deltat;
 
             // collisions and infections between them
-            for (j = 0; j < i; ++j) {
-                var person2 = people[j];
-                if (person2.dead) continue;
-
-                if (person.Collision(person2)) {
-                    person.Collide(person2);
-
-                    if (person.infected && !person2.infected && !person2.cured) {
-                        if (Math.random() < infectProb)
-                        {
-                           person2.infected = true;
-                           ++infections;
-                        }
-                    }
-                    else if (person2.infected && !person.infected && !person.cured) {
-                        if (Math.random() < infectProb)
-                        {
-                           person.infected = true;
-                           ++infections;
-                        }
-                    }
-                }
-            }
-
+            CollideWithOthers(person, i);
+			
             // cure
             if (person.infected && person.infectedTime > cureTime) {
                 person.infected = false;
