@@ -146,7 +146,7 @@
             person.velY *= -1;
             person.posY = canvas.height - radius;
         }		
-	}
+    }
 	
     function CollideWithOthers(person, i) {
         for (j = 0; j < i; ++j) {
@@ -172,7 +172,7 @@
                 }
             }
         }		
-	}
+    }
 
     function Advance() {
         // for each from the population
@@ -212,10 +212,10 @@
             }
         }
 
-		DisplayPopulation();
+        DisplayPopulation();
     }
 	
-	function DisplayPopulation() {
+    function DisplayPopulation() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for (i = 0; i < nrPeople; ++i) {
             var person = people[i];
@@ -241,7 +241,7 @@
             ctxChart.clearRect(0, 0, chart.width, chart.height);
             Init();
         }		
-	}
+    }
 
     setInterval(Advance, 10);
 })();
