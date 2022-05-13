@@ -128,7 +128,7 @@
 
     Init();
 
-	function CollideWithWalls(person) {
+    function CollideWithWalls(person) {
         if (person.posX <= radius) {
             person.velX *= -1;
             person.posX = radius;
@@ -148,7 +148,7 @@
         }		
 	}
 	
-	function CollideWithOthers(person, i) {
+    function CollideWithOthers(person, i) {
         for (j = 0; j < i; ++j) {
             var person2 = people[j];
             if (person2.dead) continue;
