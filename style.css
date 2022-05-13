@@ -1,0 +1,27 @@
+body {
+  background-color: black;
+}
+h1 {
+  color: white;
+}
+h3 {
+  color: white;
+}
+a:link {
+  color: blue;
+}
+a:visited {
+  color: blue;
+}
+a:hover {
+  color: red;
+}
+a:active {
+  color: lightblue;
+}
+p {
+  color: white;
+}
+canvas {
+	background-color: white;
+}
