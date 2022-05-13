@@ -128,6 +128,26 @@
 
     Init();
 
+	function CollideWithWalls(person) {
+        if (person.posX <= radius) {
+            person.velX *= -1;
+            person.posX = radius;
+        }
+        else if (person.posX >= canvas.width - radius) {
+            person.velX *= -1;
+            person.posX = canvas.width - radius;
+        }
+
+        if (person.posY <= radius) {
+            person.velY *= -1;
+            person.posY = radius;
+        }
+        else if (person.posY >= canvas.height - radius) {
+            person.velY *= -1;
+            person.posY = canvas.height - radius;
+        }		
+	}
+
     function Advance() {
         // for each from the population
         for (i = 0; i < nrPeople; ++i) {
@@ -141,24 +161,7 @@
 
             // collide / infect / cure
 
-            // first, walls collisions
-            if (person.posX <= radius) {
-                person.velX *= -1;
-                person.posX = radius;
-            }
-            else if (person.posX >= canvas.width - radius) {
-                person.velX *= -1;
-                person.posX = canvas.width - radius;
-            }
-
-            if (person.posY <= radius) {
-                person.velY *= -1;
-                person.posY = radius;
-            }
-            else if (person.posY >= canvas.height - radius) {
-                person.velY *= -1;
-                person.posY = canvas.height - radius;
-            }
+			CollideWithWalls(person);
 
             // keep track of how long the infection lasts
             if (person.infected)
