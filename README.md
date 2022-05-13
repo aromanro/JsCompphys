@@ -1,5 +1,7 @@
 # JsCompphys
 
+[![CodeFactor](https://www.codefactor.io/repository/github/aromanro/jscompphys/badge)](https://www.codefactor.io/repository/github/aromanro/jscompphys)
+
 Javascript code from https://compphys.go.ro
 
 1. Code for Monte Carlo methods from here: https://compphys.go.ro/monte-carlo-methods/
