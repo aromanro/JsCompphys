@@ -111,7 +111,7 @@
           }
  
           return "rgb(" + r.toString() + "," + g.toString() + "," + b.toString() + ")";
-        };
+        }
   
         ctx = canvas.getContext("2d");
         displaySize = canvas.width / model.Size;
@@ -123,7 +123,7 @@
                ctx.fillStyle = Color(model.Field(i, j));               
                ctx.fillRect(j * displaySize, i * displaySize, rectSize, rectSize);               
            }
- };
+ }
 
 
  ParticularModel1 = new SquareModel(8);

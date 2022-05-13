@@ -21,8 +21,8 @@
 
     // some parameters
     var nrPeople = 500;
-    var speed = canvas.width / 50.;
-    var radius = canvas.width / 100.;
+    var speed = canvas.width / 50;
+    var radius = canvas.width / 100;
     var deltat = 0.01;
     var cureTime = 5.;
     var deathProb = 0.05;
@@ -205,7 +205,10 @@
             }
         }
 
-        // display
+		DisplayPopulation();
+    }
+	
+	function DisplayPopulation() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for (i = 0; i < nrPeople; ++i) {
             var person = people[i];
@@ -230,8 +233,8 @@
         {
             ctxChart.clearRect(0, 0, chart.width, chart.height);
             Init();
-        }
-    }
+        }		
+	}
 
     setInterval(Advance, 10);
 })();
