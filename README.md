@@ -1,5 +1,6 @@
 # JsCompphys
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/957d04854f5641d5a61402b7c977f4cb)](https://app.codacy.com/gh/aromanro/JsCompphys?utm_source=github.com&utm_medium=referral&utm_content=aromanro/JsCompphys&utm_campaign=Badge_Grade_Settings)
 [![CodeFactor](https://www.codefactor.io/repository/github/aromanro/jscompphys/badge)](https://www.codefactor.io/repository/github/aromanro/jscompphys)
 
 Javascript code from https://compphys.go.ro
