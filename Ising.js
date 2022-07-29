@@ -1,8 +1,8 @@
-var monteCarlo = (function() {
- var canvas = document.getElementById("monteCarloCanvas");
- var ctx = canvas.getContext("2d");
+let monteCarlo = (function() {
+ let canvas = document.getElementById("monteCarloCanvas");
+ let ctx = canvas.getContext("2d");
 
- var isingSpins = {
+ let isingSpins = {
     Size: 64,
     Temperature: 2.26918531421/0.95,
     spins: [],
