@@ -10,8 +10,8 @@
  var insidePoints = 0;
 
  function randomPoint() {
-    var x = 2.*Math.random()-1; 
-    var y = 2.*Math.random()-1;
+    var x = 2.0*Math.random()-1; 
+    var y = 2.0*Math.random()-1;
 
     var p = x*x + y*y;
     if (p < 1) {
