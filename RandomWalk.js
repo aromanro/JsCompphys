@@ -1,13 +1,13 @@
 (function() {
- var canvas = document.getElementById("randomWalkCanvas");
- var ctx = canvas.getContext("2d");
+ let canvas = document.getElementById("randomWalkCanvas");
+ let ctx = canvas.getContext("2d");
  ctx.strokeStyle = "#000088";
 
- var dist = canvas.height / 2.0;
+ const dist = canvas.height / 2.0;
  ctx.translate(dist, dist);
 
- var posX = 0;
- var posY = 0;
+ let posX = 0;
+ let posY = 0;
 
  function randomWalk() {
     const dir = Math.floor(Math.random()*2);

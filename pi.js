@@ -1,19 +1,19 @@
 (function() {
- var piText = document.getElementById("piText");
- var canvas = document.getElementById("piCanvas");
- var ctx = canvas.getContext("2d");
+ let piText = document.getElementById("piText");
+ let canvas = document.getElementById("piCanvas");
+ let ctx = canvas.getContext("2d");
 
- var radius = canvas.height / 2.0;
+ const radius = canvas.height / 2.0;
  ctx.translate(radius, radius);
 
- var totalPoints = 0;
- var insidePoints = 0;
+ let totalPoints = 0;
+ let insidePoints = 0;
 
  function randomPoint() {
-    var x = 2.0*Math.random()-1; 
-    var y = 2.0*Math.random()-1;
+    const x = 2.0*Math.random()-1; 
+    const y = 2.0*Math.random()-1;
 
-    var p = x*x + y*y;
+    const p = x*x + y*y;
     if (p < 1) {
         ctx.fillStyle = "#FF0000";
         ++insidePoints;
@@ -25,7 +25,7 @@
 
     if (totalPoints % 100 === 0)
     {
-       var piApprox = insidePoints / totalPoints * 4;
+       const piApprox = insidePoints / totalPoints * 4;
        piText.innerHTML = piApprox.toPrecision(3);
        if (piText.innerHTML == "3.14")
        {
