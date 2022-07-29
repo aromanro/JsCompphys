@@ -8,7 +8,7 @@
     this.IndexForSize = function(row, col, size) { return size*row+col; };
     this.Index = function(row, col) { return this.IndexForSize(row, col, this.Size); };
     this.Value = function(matrix, row, col) { return matrix[this.Index(row, col)]; };
-    this.Boundary = function(row, col) { return row == 0 || col == 0 || row == this.Size - 1 || col == this.Size - 1; };
+    this.Boundary = function(row, col) { return row === 0 || col === 0 || row === this.Size - 1 || col === this.Size - 1; };
     this.Field = function(row, col) { return this.field[this.Index(row, col)]; };
 
     this.SetBoundary = function() {
@@ -100,14 +100,14 @@
           b = 0;
           if (val > 0)
           {
-              r = Math.ceil(255. * val);
-              g = Math.floor(255. * (1. - val));
+              r = Math.ceil(255.0 * val);
+              g = Math.floor(255.0 * (1. - val));
           }
           else
           {
              val *= -1;
-             g = Math.floor(255. * (1. - val));
-             b = Math.ceil(255. * val);
+             g = Math.floor(255.0 * (1.0 - val));
+             b = Math.ceil(255.0 * val);
           }
  
           return "rgb(" + r.toString() + "," + g.toString() + "," + b.toString() + ")";
@@ -134,10 +134,10 @@
     DisplayModel(canvas, Relaxation1.model);
     error = Relaxation1.Relax();
 
-    if (error / (Relaxation1.model.Size * Relaxation1.model.Size) < 0.0000001)
+    if (error / (Relaxation1.model.Size * Relaxation1.model.Size) < 1.0e-7)
     {
        Relaxation1.MakeGridSmaller();
-       if (Relaxation1.model.Size == 256) Relaxation1.Reset();
+       if (Relaxation1.model.Size === 256) Relaxation1.Reset();
     }
  }
 
