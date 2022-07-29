@@ -11,7 +11,7 @@ var monteCarlo = (function() {
     Index: function(index) { return index < 0 ? index + this.Size : index % this.Size; },
     Neighbor: function(row, col) { return this.Spin(this.Index(row), this.Index(col)); },
     NeighborContribution: function(row, col) { return this.Neighbor(row - 1, col) + this.Neighbor(row + 1, col) + this.Neighbor(row, col - 1) + this.Neighbor(row, col + 1); },
-    ExpMinusBetaE: function(E) { return Math.exp(-1. / this.Temperature * E); },
+    ExpMinusBetaE: function(E) { return Math.exp(-1.0 / this.Temperature * E); },
     EnergyDifForFlip: function(row, col) { return 2 * this.Spin(row, col) * this.NeighborContribution(row, col); },
     Init: function() {
         var nr = this.Size * this.Size;

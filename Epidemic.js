@@ -24,9 +24,9 @@
     var speed = canvas.width / 50;
     var radius = canvas.width / 100;
     var deltat = 0.01;
-    var cureTime = 5.;
+    var cureTime = 5.0;
     var deathProb = 0.05;
-    var infectProb = 1.;
+    var infectProb = 1.0;
 
     var chartPosX = 0;
     var chartValY = 0;
@@ -74,7 +74,7 @@
                 Collision: function (other) {
                     var dist = this.Distance(other);
 
-                    return dist <= 2. * radius;
+                    return dist <= 2 * radius;
                 },
 
                 Collide: function (other) {
@@ -97,7 +97,7 @@
             };
 
             for (; ;) {
-                var X = Math.floor(Math.random() * (canvas.width - 2. * radius)) + radius;
+                var X = Math.floor(Math.random() * (canvas.width - 2 * radius)) + radius;
                 var Y = Math.floor(Math.random() * (canvas.height - 2 * radius)) + radius;
 
                 person.posX = X;
@@ -120,7 +120,7 @@
             person.velX *= speed;
             person.velY *= speed;
 
-            if (i == 0) person.infected = true;
+            if (i === 0) person.infected = true;
 
             people.push(person);
         }
@@ -204,8 +204,8 @@
             }
 
             // kill
-            if (person.infected && person.infectedTime > cureTime / 3.) {
-                if (Math.random() < deathProb * deltat / (cureTime * 2. / 3.)) {
+            if (person.infected && person.infectedTime > cureTime / 3.0) {
+                if (Math.random() < deathProb * deltat / (cureTime * 2.0 / 3.0)) {
                     person.dead = true;
                     ++deaths;
                 }

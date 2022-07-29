@@ -3,7 +3,7 @@
  var ctx = canvas.getContext("2d");
  ctx.strokeStyle = "#000088";
 
- var dist = canvas.height / 2.;
+ var dist = canvas.height / 2.0;
  ctx.translate(dist, dist);
 
  var posX = 0;
@@ -16,7 +16,7 @@
     ctx.beginPath();
     ctx.moveTo(posX,posY);
 
-    if (dir == 0) 
+    if (dir === 0) 
         posX += (sense ? 1 : -1)*4;
     else
         posY += (sense ? 1 : -1)*4;     
