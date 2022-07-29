@@ -30,8 +30,8 @@
 
     var chartPosX = 0;
     var chartValY = 0;
-    var chartXScale = 0.1;
-    var chartYScale = chart.height / nrPeople;
+    const chartXScale = 0.1;
+    const chartYScale = chart.height / nrPeople;
 
     // statistics
     var deaths = 0;
@@ -72,20 +72,20 @@
                 },
 
                 Collision: function (other) {
-                    var dist = this.Distance(other);
+                    const dist = this.Distance(other);
 
                     return dist <= 2 * radius;
                 },
 
                 Collide: function (other) {
-                    var velXdif = this.velX - other.velX;
-                    var velYdif = this.velY - other.velY;
+                    let velXdif = this.velX - other.velX;
+                    let velYdif = this.velY - other.velY;
 
-                    var posXdif = this.posX - other.posX;
-                    var posYdif = this.posY - other.posY;
+                    let posXdif = this.posX - other.posX;
+                    let posYdif = this.posY - other.posY;
 
-                    var dist2 = posXdif * posXdif + posYdif * posYdif;
-                    var dotProd = velXdif * posXdif + velYdif * posYdif;
+                    const dist2 = posXdif * posXdif + posYdif * posYdif;
+                    let dotProd = velXdif * posXdif + velYdif * posYdif;
                     dotProd /= dist2;
 
                     this.velX -= dotProd * posXdif;
@@ -97,15 +97,15 @@
             };
 
             for (; ;) {
-                var X = Math.floor(Math.random() * (canvas.width - 2 * radius)) + radius;
-                var Y = Math.floor(Math.random() * (canvas.height - 2 * radius)) + radius;
+                const X = Math.floor(Math.random() * (canvas.width - 2 * radius)) + radius;
+                const Y = Math.floor(Math.random() * (canvas.height - 2 * radius)) + radius;
 
                 person.posX = X;
                 person.posY = Y;
 
                 overlap = false;
                 for (j = 0; j < i; ++j) {
-                    var person2 = people[j];
+                    let person2 = people[j];
                     if (person2.Collision(person)) {
                         overlap = true;
                         break;
