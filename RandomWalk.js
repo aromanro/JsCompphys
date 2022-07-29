@@ -10,8 +10,8 @@
  var posY = 0;
 
  function randomWalk() {
-    var dir = Math.floor(Math.random()*2);
-    var sense = Math.floor(Math.random()*2);
+    const dir = Math.floor(Math.random()*2);
+    const sense = Math.floor(Math.random()*2);
 
     ctx.beginPath();
     ctx.moveTo(posX,posY);

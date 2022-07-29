@@ -1,6 +1,6 @@
 (function () {
     var canvas = document.getElementById("Canvas");
-    var chart = document.getElementById("Chart");
+    let chart = document.getElementById("Chart");
 
     canvas.width = Math.min(window.innerWidth - 50, window.innerHeight - 50);
     if (canvas.width < 300) canvas.width = 300;
@@ -11,7 +11,7 @@
     chart.height = chart.width / 3;
 
     var ctx = canvas.getContext("2d");
-    var canvasText = document.getElementById("canvasText");
+    let canvasText = document.getElementById("canvasText");
 
     var ctxChart = chart.getContext("2d");
     ctxChart.strokeStyle = "#FF0000";
@@ -20,8 +20,8 @@
     var people = [];
 
     // some parameters
-    var nrPeople = 500;
-    var speed = canvas.width / 50;
+    const nrPeople = 500;
+    let speed = canvas.width / 50;
     var radius = canvas.width / 100;
     var deltat = 0.01;
     var cureTime = 5.0;

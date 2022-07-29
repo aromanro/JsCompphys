@@ -101,7 +101,7 @@
           if (val > 0)
           {
               r = Math.ceil(255.0 * val);
-              g = Math.floor(255.0 * (1. - val));
+              g = Math.floor(255.0 * (1.0 - val));
           }
           else
           {

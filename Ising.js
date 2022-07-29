@@ -14,17 +14,17 @@ var monteCarlo = (function() {
     ExpMinusBetaE: function(E) { return Math.exp(-1.0 / this.Temperature * E); },
     EnergyDifForFlip: function(row, col) { return 2 * this.Spin(row, col) * this.NeighborContribution(row, col); },
     Init: function() {
-        var nr = this.Size * this.Size;
-        for (var i = 0; i < nr; ++i) this.spins.push(Math.random() < 0.5 ? -1 : 1);
+        let nr = this.Size * this.Size;
+        for (let i = 0; i < nr; ++i) this.spins.push(Math.random() < 0.5 ? -1 : 1);
     },
     Sweep: function() {
-        var nr = this.Size * this.Size;
+        let nr = this.Size * this.Size;
         
-        for (var i = 0; i < nr; ++i) {
-            var row = Math.floor (Math.random() * this.Size);
-            var col = Math.floor (Math.random() * this.Size);
+        for (let i = 0; i < nr; ++i) {
+            let row = Math.floor (Math.random() * this.Size);
+            let col = Math.floor (Math.random() * this.Size);
              
-            var energyDif = this.EnergyDifForFlip(row, col);
+            let energyDif = this.EnergyDifForFlip(row, col);
             if (energyDif < 0) this.spins[this.Size*row+col] *= -1;
             else
             {
@@ -34,8 +34,8 @@ var monteCarlo = (function() {
          }
     },
     Display: function(ctx) {
-        for (var i = 0; i < this.Size; ++i)
-            for (var j = 0; j < this.Size; ++j)
+        for (let i = 0; i < this.Size; ++i)
+            for (let j = 0; j < this.Size; ++j)
             {
                if (this.Spin(i, j) < 0) ctx.fillStyle = "#FF0000";
                else ctx.fillStyle = "#0000FF";
