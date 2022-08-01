@@ -103,8 +103,8 @@
                 person.posX = X;
                 person.posY = Y;
 
-                overlap = false;
-                for (j = 0; j < i; ++j) {
+                let overlap = false;
+                for (let j = 0; j < i; ++j) {
                     let person2 = people[j];
                     if (person2.Collision(person)) {
                         overlap = true;
@@ -149,7 +149,7 @@
     }
 
     function CollideWithOthers(person, i) {
-        for (j = 0; j < i; ++j) {
+        for (let j = 0; j < i; ++j) {
             let person2 = people[j];
             if (person2.dead) continue;
 
@@ -216,7 +216,7 @@
     function DisplayPopulation() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for (i = 0; i < nrPeople; ++i) {
-            var person = people[i];
+            const person = people[i];
             if (person.dead) continue;
             ctx.beginPath();
             ctx.arc(person.posX, person.posY, radius, 0, 2 * Math.PI, false);
