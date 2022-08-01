@@ -1,5 +1,5 @@
 (function () {
-    var canvas = document.getElementById("Canvas");
+    let canvas = document.getElementById("Canvas");
     let chart = document.getElementById("Chart");
 
     canvas.width = Math.min(window.innerWidth - 50, window.innerHeight - 50);
@@ -10,33 +10,33 @@
     chart.width = canvas.width;
     chart.height = chart.width / 3;
 
-    var ctx = canvas.getContext("2d");
+    let ctx = canvas.getContext("2d");
     let canvasText = document.getElementById("canvasText");
 
-    var ctxChart = chart.getContext("2d");
+    let ctxChart = chart.getContext("2d");
     ctxChart.strokeStyle = "#FF0000";
     ctxChart.lineWidth = 4;
 
-    var people = [];
+    let people = [];
 
     // some parameters
     const nrPeople = 500;
-    let speed = canvas.width / 50;
-    var radius = canvas.width / 100;
-    var deltat = 0.01;
-    var cureTime = 5.0;
-    var deathProb = 0.05;
-    var infectProb = 1.0;
+    const speed = canvas.width / 50;
+    const radius = canvas.width / 100;
+    const deltat = 0.01;
+    let cureTime = 5.0;
+    const deathProb = 0.05;
+    const infectProb = 1.0;
 
-    var chartPosX = 0;
-    var chartValY = 0;
+    let chartPosX = 0;
+    let chartValY = 0;
     const chartXScale = 0.1;
     const chartYScale = chart.height / nrPeople;
 
     // statistics
-    var deaths = 0;
-    var infections = 1;
-    var cures = 0;
+    let deaths = 0;
+    let infections = 1;
+    let cures = 0;
 
     function Init() {
         deaths = 0;
@@ -47,7 +47,7 @@
         chartValY = 0;
 
         for (i = 0; i < nrPeople; ++i) {
-            var person =
+            let person =
             {
                 posX: 0,
                 posY: 0,
@@ -59,14 +59,14 @@
                 infectedTime: 0.0,
 
                 NormalizeVelocity: function () {
-                    var len = Math.sqrt(this.velX * this.velX + this.velY * this.velY);
+                    const len = Math.sqrt(this.velX * this.velX + this.velY * this.velY);
                     this.velX /= len;
                     this.velY /= len;
                 },
 
                 Distance: function (other) {
-                    var distX = this.posX - other.posX;
-                    var distY = this.posY - other.posY;
+                    const distX = this.posX - other.posX;
+                    const distY = this.posY - other.posY;
 
                     return Math.sqrt(distX * distX + distY * distY);
                 },
@@ -145,39 +145,37 @@
         else if (person.posY >= canvas.height - radius) {
             person.velY *= -1;
             person.posY = canvas.height - radius;
-        }		
+        }
     }
-	
+
     function CollideWithOthers(person, i) {
         for (j = 0; j < i; ++j) {
-            var person2 = people[j];
+            let person2 = people[j];
             if (person2.dead) continue;
 
             if (person.Collision(person2)) {
                 person.Collide(person2);
 
                 if (person.infected && !person2.infected && !person2.cured) {
-                    if (Math.random() < infectProb)
-                    {
-                       person2.infected = true;
-                       ++infections;
+                    if (Math.random() < infectProb) {
+                        person2.infected = true;
+                        ++infections;
                     }
                 }
                 else if (person2.infected && !person.infected && !person.cured) {
-                    if (Math.random() < infectProb)
-                    {
-                       person.infected = true;
-                       ++infections;
+                    if (Math.random() < infectProb) {
+                        person.infected = true;
+                        ++infections;
                     }
                 }
             }
-        }		
+        }
     }
 
     function Advance() {
         // for each from the population
         for (i = 0; i < nrPeople; ++i) {
-            var person = people[i];
+            let person = people[i];
             if (person.dead) continue;
 
             // move
@@ -195,7 +193,7 @@
 
             // collisions and infections between them
             CollideWithOthers(person, i);
-			
+
             // cure
             if (person.infected && person.infectedTime > cureTime) {
                 person.infected = false;
@@ -214,7 +212,7 @@
 
         DisplayPopulation();
     }
-	
+
     function DisplayPopulation() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for (i = 0; i < nrPeople; ++i) {
@@ -231,16 +229,16 @@
 
         ctxChart.beginPath();
         ctxChart.moveTo(chartPosX * chartXScale, chart.height - chartValY * chartYScale);
-        ++chartPosX;  
-        chartValY = infections;      
+        ++chartPosX;
+        chartValY = infections;
         ctxChart.lineTo(chartPosX * chartXScale, chart.height - chartValY * chartYScale);
         ctxChart.stroke();
-       
+
         if (infections - deaths == cures) // there is no more left to cure
         {
             ctxChart.clearRect(0, 0, chart.width, chart.height);
             Init();
-        }		
+        }
     }
 
     setInterval(Advance, 10);
