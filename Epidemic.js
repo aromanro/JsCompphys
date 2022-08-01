@@ -46,7 +46,7 @@
         chartPosX = 0;
         chartValY = 0;
 
-        for (i = 0; i < nrPeople; ++i) {
+        for (let i = 0; i < nrPeople; ++i) {
             let person =
             {
                 posX: 0,
@@ -174,7 +174,7 @@
 
     function Advance() {
         // for each from the population
-        for (i = 0; i < nrPeople; ++i) {
+        for (let i = 0; i < nrPeople; ++i) {
             let person = people[i];
             if (person.dead) continue;
 
@@ -215,7 +215,7 @@
 
     function DisplayPopulation() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (i = 0; i < nrPeople; ++i) {
+        for (let i = 0; i < nrPeople; ++i) {
             const person = people[i];
             if (person.dead) continue;
             ctx.beginPath();
