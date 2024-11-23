@@ -24,6 +24,18 @@ var perc = (function () {
             }
             return c;
         },
+		
+        UnionParents: function(parents, ranks, c1, c2) {
+            c1 = this.Find(parents, c1);
+            c2 = this.Find(parents, c2);
+            if (c1 != c2) {
+                if (ranks[c1] < ranks[c2])
+                    [c1, c2] = [c2, c1];
+                parents[c2] = c1;
+                if (ranks[c1] == ranks[c2])
+                    ++ranks[c1];
+            }		
+        },
 
         Union: function (parents, ranks, i1, j1, i2, j2, c) {
             var ind1 = i1 * this.Size + j1;
@@ -43,17 +55,8 @@ var perc = (function () {
                 this.clusters[ind1] = c2;
             else if (c1 != 0 && c2 == 0)
                 this.clusters[ind2] = c1;
-            else {
-                c1 = this.Find(parents, c1);
-                c2 = this.Find(parents, c2);
-                if (c1 != c2) {
-                    if (ranks[c1] < ranks[c2])
-                        [c1, c2] = [c2, c1];
-                    parents[c2] = c1;
-                    if (ranks[c1] == ranks[c2])
-                        ++ranks[c1];
-                }
-            }
+            else
+				this.UnionParents(parents, ranks, c1, c2);
 
             return c;
         },
