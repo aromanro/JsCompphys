@@ -56,7 +56,7 @@ var perc = (function () {
             else if (c1 != 0 && c2 == 0)
                 this.clusters[ind2] = c1;
             else
-				this.UnionParents(parents, ranks, c1, c2);
+                this.UnionParents(parents, ranks, c1, c2);
 
             return c;
         },
