@@ -9,3 +9,5 @@ Javascript code from https://compphys.go.ro
 2.  Code for the Ising model from here: https://compphys.go.ro/the-ising-model/
 3.  Code for the relaxation method from here: https://compphys.go.ro/relaxation-method/
 4.  Code for the epidemic model from here: https://compphys.go.ro/epidemic/
+5.  Code for percolation... description coming soon on: https://compphys.go.ro/
+
