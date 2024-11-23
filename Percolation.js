@@ -48,7 +48,7 @@ var perc = (function () {
                 c2 = this.Find(parents, c2);
                 if (c1 != c2) {
                     if (ranks[c1] < ranks[c2])
-						[c1, c2] = [c2, c1];
+                        [c1, c2] = [c2, c1];
                     parents[c2] = c1;
                     if (ranks[c1] == ranks[c2])
                         ++ranks[c1];
@@ -151,13 +151,8 @@ var perc = (function () {
 
             return 60 * h;
         },
-
-        Display: function (ctx) {
-            const clustersSet = new Set();
-            for (let i = 0; i < this.Size; ++i)
-                for (let j = 0; j < this.Size; ++j)
-                    clustersSet.add(this.clusters[i * this.Size + j]);
-
+		
+        ClustersColors: function (clustersSet) {
             const colorsClusters = new Map();
             colorsClusters.set(0, '#FFFFFF');
             for (const cluster of clustersSet) {
@@ -189,6 +184,16 @@ var perc = (function () {
                     if (++cnt > 1000) break;
                 } while (!unique);
             }
+            return colorsClusters;
+        },		
+
+        Display: function (ctx) {
+            const clustersSet = new Set();
+            for (let i = 0; i < this.Size; ++i)
+                for (let j = 0; j < this.Size; ++j)
+                    clustersSet.add(this.clusters[i * this.Size + j]);
+
+            const colorsClusters = this.ClustersColors(clustersSet);
 
             let sz = this.displaySize * this.Size;
             ctx.clearRect(0, 0, sz, sz);
